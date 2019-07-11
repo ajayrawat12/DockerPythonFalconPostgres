@@ -1,0 +1,34 @@
+version: '3.6'
+services:
+    db:
+        # restart: always
+        image: postgres:11-alpine
+        env_file: database.conf
+        ports:
+            - 5432:5432
+        volumes:
+            - pgdata:/var/lib/postgresql/data/
+    sales_api:
+        depends_on:
+            - db
+        restart: always
+        container_name: sales_api
+        build: .
+        environment:
+            - TZ=Asia/Kolkata
+        build: .
+        volumes:
+            - ../.:/app
+        ports:
+            - "8000:8000"
+
+    # migration:
+    #     image: sales_api:latest
+    #     command: ["./wait-for-it/wait-for-it.sh", "mysql:3306", "--", "npm", "run", "migrate"]
+    #     links:
+    #       - postgres
+    #     depends_on:
+    #       - postgres
+
+volumes:
+    pgdata:
