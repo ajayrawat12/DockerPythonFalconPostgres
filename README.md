@@ -6,4 +6,4 @@ Docker setup for python falcon api and postgresql
 
 # InDocker DB-Migrations
 1. docker ps -a
-2. docker exec -it '(container_id of sales_api)' alembic upgrade head
+2. docker exec -it '(container_id of api)' alembic upgrade head
