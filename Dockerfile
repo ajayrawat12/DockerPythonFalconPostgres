@@ -9,7 +9,7 @@ COPY run.sh /scripts/run.sh
 EXPOSE 8000
 EXPOSE 5432
 
-WORKDIR /sales
-COPY . /sales
+WORKDIR /myapp
+COPY . /myapp
 RUN pip install -r requirements.txt
 ENTRYPOINT ["/scripts/run.sh"]
