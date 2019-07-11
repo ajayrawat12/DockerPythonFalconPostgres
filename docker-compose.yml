@@ -8,11 +8,11 @@ services:
             - 5432:5432
         volumes:
             - pgdata:/var/lib/postgresql/data/
-    sales_api:
+    api:
         depends_on:
             - db
         restart: always
-        container_name: sales_api
+        container_name: api
         build: .
         environment:
             - TZ=Asia/Kolkata
